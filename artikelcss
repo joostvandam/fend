@@ -1,7 +1,269 @@
-body {
-    background-color: lightblue;
+* {
+	box-sizing:border-box;
+	padding:0;
+	margin:0;
+	color:black;
 }
 
-h1{
-	text-shadow: 3px 3px 4px rgba(152, 150, 150, 1);
+header img{
+	float:left;
+	width: 20em;
 }
+
+
+aside {
+	/*zorgt voor het grijze randje tussen de aside en de main*/
+	margin-left:.20em;
+	/*zorgt voor de afstand tussen de tekst en de randen*/
+	padding:1em;
+}
+
+
+
+/*list items*/
+
+/*alle uls in de body*/
+nav ul {
+	/*zorgt dat de ul naast erlkaar verschijnt inplaats van onder elkaar*/
+	display:flex;
+	/*zorgt ervoor dat de ul wrapt dus als je schaalt komen ze mooi onder elkaar*/
+	flex-wrap:wrap;
+}
+
+nav li {
+	/*menu ruimte ertussen, groeien allemaal evenveel*/
+	flex-grow:1;
+	/*haalt het puntje weg*/
+	list-style:none;
+}
+
+nav a {
+	/*zorgt dat nav a in blokjes worden weergegeven en elkaar vast komt te zitten*/
+	display:block;
+	/*padding tussen de blokjes*/
+	padding:1em;
+	background-color:white;
+	/*doorzichtigheid van de blokjes*/
+	opacity:.5;
+	/*tekst komt in het midden*/
+	text-align:center;
+	transition:0.5s;
+}
+
+/*zorgt ervoor dat als er gehovert wordt of active is de opacity 1 is dus dan wordt die niet meer doorzichtig in dit geval dus wit.*/
+nav .active a, nav a:hover {
+	opacity:1;
+}
+
+/*blokje met uitstroomberoepen > selecteert alles wat direct in de section staat dus zonder andere parents eromheen*/
+section> ol li {
+display: block;
+list-style-type: none;
+min-width: 15em;
+padding: 0.3em;
+border-bottom: 0.1em solid #333;
+margin: 0.1em;
+}
+
+/*form pagina*/
+/*zorgt dat ze onder elkaar komen te staan*/
+label {
+	display:block;
+}
+
+[for="name"]:after,
+[for="email"]:after {
+	content: "*";
+	color: red;
+	font-size: 1em;
+}
+
+/*classes create for javascript*/
+.fieldset {
+	display: none;
+}
+
+.fieldset-is-on {
+	display: block;
+}
+/*> selecteert alles wat direct in de section staat dus zonder andere parents eromheen*/
+body>main>aside>article {
+	margin-left:1em;
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
+body {
+	font-family:verdana;
+	/*ruimte tussen de lijnen*/
+	line-height:1.5em;
+	color:#333;
+	background:#ccc;
+	margin:1em;
+}
+
+a {
+	/*zorgt dat de links geen streep krijgen*/
+	text-decoration:none;
+}
+
+main, aside, footer {
+	background-color:white;
+}
+
+/*als er ruimte is komt er margin tussen de lis alleen als de minimale breedte 60em, alleen bij screen niet bij printen*/
+@media screen and (min-width:60em){
+			html,body {
+			overflow-x:hidden;
+		}
+	nav ul{
+		/*haalt aan rechts en links de ruimte het weg*/
+		margin:0 -.25em;
+	}
+	nav li{
+		/*eerste is top, tweede is links, derde is bottum, rechts*/
+		margin:0 .25em;
+	}
+/* footer */
+
+/*selecteert de h1 in de footer*/
+body > footer > h1 {
+	margin: 1em 0 0 1.5em;
+	padding:1em;
+}
+
+body>footer>ul {	
+	display: flex;
+	flex-direction: row;
+/* items are evenly distributed in the line; first item is on the start line, last item on the end line*/
+	justify-content: space-between;
+	padding: 1em 4em;
+}
+
+body>footer>div section {
+	padding: 1em 3em;
+}
+
+body>footer> div h1 {
+	font-size: 1.3em;
+	margin-bottom: 1em;
+}
+
+body>footer>ul> section>li {
+	font-weight: bold;
+	list-style-type: none;
+	margin-left: -1em;
+}
+
+body > footer > ul > section > ul li::after {
+	content: "»";
+}
+	
+/*eerste div in de body*/
+body>div:first-of-type{
+	display:flex;
+	flex-direction:row;
+	margin-left:2em;
+	margin-right:2em;
+	border:solid .5em;
+}
+
+main {
+	width:1400%;
+}
+}
+
+/*screen: dit gebeurt er als de breedte 45em of minder is*/
+@media screen and (max-width:45em) {
+		html,body {
+			width:100%;
+			/*zet de pagina horizontaal 'vast'*/
+			overflow-x:hidden;
+		}
+		body{
+			margin:0em;
+			padding:0em;
+		}
+		body > * {
+			transition:0.5s;
+		}
+		body.navigatie > *:not(script) {
+		/* komt van de linkerkant, Met y vanaf de bovenkant*/
+			-webkit-transform:translateX(16em);
+			transform:translateX(16em);
+		}
+
+		body > header {
+		position:relative;
+		}
+
+		header>h1 {
+			padding-top:2.50em;
+			font-size:1.5em;
+		}
+
+		main img {
+		width: 100%;
+		}
+
+		nav ul {
+		position:absolute;
+		top:0;
+		flex-direction:column;
+		/*maakt het menu kleiner*/
+		width:16em;
+		/*het menu schuift naar links zodat hij niet meer zichtbaar hij is 16 breedt en 16 gaat er weg*/
+		left:-16em;
+	}
+}
+
+/*dat de content achter de nav komt te staan*/
+nav ul::after {
+	/*hierdoor geeft ie alleen een stukje wit neer als je hier iets typt geeft die dat weer*/
+	content:"";
+	/*de groote ervan*/
+	width:2.5em;
+	height:2.5em;
+	background:black;
+
+	position:absolute;
+	top:.25em;
+	right:-3em;
+
+	/*rond knopje maken*/
+	border-radius:20%;
+	/*img pannenkoek erin gezet*/
+	background:#fff url(menu.svg) center center no-repeat;
+}
+
+body article p{
+	margin:1em;
+}
+
+body article h1 { 
+	margin: 1em;
+}
+
+body article h2{
+	margin: 1em;
+}
+
+body label {
+	padding: 0.25em;
+}
+
+
+body>div>main>h1, p{
+	margin-left:0.25em;
+	margin-top:0.25em;
+}
+
+body>aside>h1{
+	margin:1em;
+}
+
+
+section>ul{
+	list-style:none;
+}
+
