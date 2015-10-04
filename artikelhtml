@@ -2,8 +2,8 @@
 <html lang="nl">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/artikelpagina.css">
         <title>Artikelpagina</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
 
@@ -11,7 +11,7 @@
         <header>
             <h1>CMD Amsterdam - Intranet</h1>
             <p>Communication and Multimedia Design is een ontwerpopleiding voor interactieve media in Amsterdam.</p>
-            <img src="img/cmd_logo.png" id="cmdlogo">
+            <img src="img/cmd_logo.png" alt="">
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
