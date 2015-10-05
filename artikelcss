@@ -1,62 +1,63 @@
 * {
-	box-sizing:border-box;
-	padding:0;
+	box-sizing:border-box;																			
+	padding:0.1em;																					
 	margin:0;
 	color:black;
 }
 
 header img{
-	float:left;
-	width: 20em;
+	width: 10em;
 }
 
+header h1{
+	float: none;
+	text-shadow: .1em .1em .1em rgba(255, 146, 150, 1);
+}
 
 aside {
-	/*zorgt voor het grijze randje tussen de aside en de main*/
-	margin-left:.20em;
-	/*zorgt voor de afstand tussen de tekst en de randen*/
-	padding:1em;
+	border-radius: .1em;
 }
 
+/*alle uls in body*/
 
-
-/*list items*/
-
-/*alle uls in de body*/
 nav ul {
-	/*zorgt dat de ul naast erlkaar verschijnt inplaats van onder elkaar*/
+	/*defineert een flex container*/
 	display:flex;
-	/*zorgt ervoor dat de ul wrapt dus als je schaalt komen ze mooi onder elkaar*/
-	flex-wrap:wrap;
+	/*defineert de richting waarheen flex items geplaatst zijn*/
+	flex-direction: row;
 }
 
 nav li {
-	/*menu ruimte ertussen, groeien allemaal evenveel*/
 	flex-grow:1;
-	/*haalt het puntje weg*/
+	/*haalt het cirkeltje weg*/
 	list-style:none;
 }
 
 nav a {
-	/*zorgt dat nav a in blokjes worden weergegeven en elkaar vast komt te zitten*/
+	/*zorgt dat nav a in blokjes worden weergeven*/
 	display:block;
-	/*padding tussen de blokjes*/
-	padding:1em;
 	background-color:white;
 	/*doorzichtigheid van de blokjes*/
-	opacity:.5;
+	opacity:1;
 	/*tekst komt in het midden*/
 	text-align:center;
 	transition:0.5s;
+	border-radius: 2em;
+	padding: .5em;
+	margin: .5em;
+	box-shadow: 1em 1em 1em #888888;
+
+
 }
 
-/*zorgt ervoor dat als er gehovert wordt of active is de opacity 1 is dus dan wordt die niet meer doorzichtig in dit geval dus wit.*/
-nav .active a, nav a:hover {
-	opacity:1;
+/*zorgt ervoor dat als er gehovert wordt de achtergrond navy wordt en de tekstkleur wit*/
+nav a:hover {
+	background-color:navy;
+	color:white;
 }
 
 /*blokje met uitstroomberoepen > selecteert alles wat direct in de section staat dus zonder andere parents eromheen*/
-section> ol li {
+section > ol li {
 display: block;
 list-style-type: none;
 min-width: 15em;
@@ -78,14 +79,7 @@ label {
 	font-size: 1em;
 }
 
-/*classes create for javascript*/
-.fieldset {
-	display: none;
-}
 
-.fieldset-is-on {
-	display: block;
-}
 /*> selecteert alles wat direct in de section staat dus zonder andere parents eromheen*/
 body>main>aside>article {
 	margin-left:1em;
@@ -98,7 +92,7 @@ body {
 	/*ruimte tussen de lijnen*/
 	line-height:1.5em;
 	color:#333;
-	background:#ccc;
+	background:#8BB0FF;
 	margin:1em;
 }
 
@@ -111,7 +105,7 @@ main, aside, footer {
 	background-color:white;
 }
 
-/*als er ruimte is komt er margin tussen de lis alleen als de minimale breedte 60em, alleen bij screen niet bij printen*/
+/*als er ruimte is komt er margin tussen de list alleen als de minimale breedte 60em*/
 @media screen and (min-width:60em){
 			html,body {
 			overflow-x:hidden;
@@ -135,7 +129,6 @@ body > footer > h1 {
 body>footer>ul {	
 	display: flex;
 	flex-direction: row;
-/* items are evenly distributed in the line; first item is on the start line, last item on the end line*/
 	justify-content: space-between;
 	padding: 1em 4em;
 }
@@ -173,7 +166,7 @@ main {
 }
 }
 
-/*screen: dit gebeurt er als de breedte 45em of minder is*/
+/*45em of minder*/
 @media screen and (max-width:45em) {
 		html,body {
 			width:100%;
@@ -187,8 +180,8 @@ main {
 		body > * {
 			transition:0.5s;
 		}
-		body.navigatie > *:not(script) {
-		/* komt van de linkerkant, Met y vanaf de bovenkant*/
+		body.navigatie {
+		/*vanaf links (x-as)*/
 			-webkit-transform:translateX(16em);
 			transform:translateX(16em);
 		}
@@ -212,16 +205,15 @@ main {
 		flex-direction:column;
 		/*maakt het menu kleiner*/
 		width:16em;
-		/*het menu schuift naar links zodat hij niet meer zichtbaar hij is 16 breedt en 16 gaat er weg*/
+		/*schuift menu weg (is 16em breed)*/
 		left:-16em;
 	}
 }
 
-/*dat de content achter de nav komt te staan*/
+/*content achter nav*/
 nav ul::after {
-	/*hierdoor geeft ie alleen een stukje wit neer als je hier iets typt geeft die dat weer*/
 	content:"";
-	/*de groote ervan*/
+	/*grootte*/
 	width:2.5em;
 	height:2.5em;
 	background:black;
@@ -266,4 +258,3 @@ body>aside>h1{
 section>ul{
 	list-style:none;
 }
-
